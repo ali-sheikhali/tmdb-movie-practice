@@ -7,8 +7,8 @@ import Search from "../Search";
 
 function Mobile() {
   return (
-    <div>
-      <div className="text-white font-bold flex space-x-5">
+    
+      <div className="text-white sm:font-bold flex space-x-5 z-10 ">
         <Link to="/movies">
           <p>Movies</p>
         </Link>
@@ -27,7 +27,7 @@ function Mobile() {
                   {open ? <GoChevronUp /> : <GoChevronDown />}
                 </span>
               </Menu.Button>
-              <Menu.Items className="absolute top-28 bg-[#032541] flex flex-col justify-center items-center mx-auto space-y-3 w-full right-0 py-3">
+              <Menu.Items className="absolute z-10 top-20 bg-[#032541] flex flex-col justify-center items-center mx-auto space-y-3 w-full right-0 py-3">
                 <Menu.Item className="hover:bg-[#133754] w-full text-center py-1">
                   {({ active }) => <Link to="/login">Login</Link>}
                 </Menu.Item>
@@ -49,7 +49,7 @@ function Mobile() {
           )}
         </Menu>
       </div>
-    </div>
+    
   );
 }
 
