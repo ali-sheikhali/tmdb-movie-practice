@@ -6,7 +6,7 @@ import WideScreen from "./WideScreen";
 function Navbar() {
   return (
     <div className="bg-[#032541] w-full">
-      <div className="w-11/12 md:w-10/12 mx-auto flex justify-between px-5 items-center ">
+      <div className="md:w-10/12 mx-auto flex justify-between px-5 items-center ">
         <figure>
           <Link to="/">
             <img className="w-[200px] h-20" src={tmdbLogo} alt="tmdb-logo" />

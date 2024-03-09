@@ -85,7 +85,11 @@ function UpcomingMovie({ title, movies }) {
                     {parseFloat(movie.vote_average).toFixed(1)}
                   </div>
                 </figure>
-                <div>{movie.title}</div>
+                <div className="px-2">
+                  <p className="font-bold hover:text-[rgba(1,180,228,1)] ">
+                    {movie.title ? movie.title : movie.original_name}
+                  </p>
+                </div>
               </div>
             </div>
           ))}

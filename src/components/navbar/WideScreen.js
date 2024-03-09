@@ -1,6 +1,14 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
+import "./navbar.css";
+import { IoIosMoon } from "react-icons/io";
+import { IoIosSunny } from "react-icons/io";
 function WideScreen() {
+  const [darkMode,setDarkMode] = useState(false)
+  const handleDarkMode = ()=>{
+    setDarkMode(!darkMode)
+    document.body.classList.toggle("dark-mode", darkMode);
+  }
   return (
     <div className="text-white font-bold flex items-center space-x-5">
         
@@ -19,6 +27,9 @@ function WideScreen() {
         <Link to="">
           <p>Join TMDB</p>
         </Link>
+        <button onClick={handleDarkMode} className="border p-1 rounded-lg text-lg">
+            {darkMode ?  <IoIosMoon /> : <IoIosSunny /> }
+        </button>
     </div>
   )
 }

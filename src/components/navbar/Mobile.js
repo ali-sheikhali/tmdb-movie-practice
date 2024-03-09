@@ -1,14 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "@headlessui/react";
 import { GoChevronDown } from "react-icons/go";
 import { GoChevronUp } from "react-icons/go";
 import Search from "../Search";
-
+import { IoIosMoon } from "react-icons/io";
+import { IoIosSunny } from "react-icons/io";
+import "./navbar.css";
 function Mobile() {
-  return (
-    
-      <div className="text-white sm:font-bold flex space-x-5 z-10 ">
+    const [darkMode,setDarkMode] = useState(false)
+    const handleDarkMode = ()=>{
+      setDarkMode(!darkMode)
+      document.body.classList.toggle("dark-mode", darkMode);
+    }
+  return (  
+      <div className="text-white text-[15px] flex space-x-5 z-10 ">
         <Link to="/movies">
           <p>Movies</p>
         </Link>
@@ -48,6 +54,9 @@ function Mobile() {
             </>
           )}
         </Menu>
+        <button onClick={handleDarkMode} className="border p-1 rounded-lg text-lg">
+            {darkMode ?  <IoIosMoon /> : <IoIosSunny /> }
+        </button>
       </div>
     
   );
