@@ -3,7 +3,8 @@ import HeroHeader from "../components/HeroHeader";
 import MovieSection from "../components/api/MovieSection";
 import useSWR from "swr";
 import UpcomingMovie from "../components/api/UpcomingMovie";
-
+import Banner from "../components/Banner";
+import oscarBanner from "../components/img/oscars-banner-1.jpg";
 const fetcher = (...args) =>
   fetch(...args).then((responsive) => responsive.json());
 
@@ -27,15 +28,16 @@ function Home() {
     fetcher
   );
 
-  const { data: upcomingMovie, error: upcomingMovieError } = useSWR(
-    `https://api.themoviedb.org/3/movie/upcoming?language=en-USapi_key=${apiKey}`,
+  const { data: upcomingMovie, error: upcomingMovieError, isLoading: upcomingMovieErrorIsLoading } = useSWR(
+    `https://api.themoviedb.org/3/movie/upcoming?language=en-US&api_key=${apiKey}`,
     fetcher
   );
-    console.log(upcomingMovie);
+  console.log(upcomingMovie);
+
   if (trendingMovieError || popularMovieError || upcomingMovieError) {
     return <h1>Not found</h1>;
   }
-  if (trendingMovieIsLoading || popularMovieIsLoading) {
+  if (trendingMovieIsLoading || popularMovieIsLoading || upcomingMovieErrorIsLoading) {
     return <h1>loading...</h1>;
   }
 
@@ -43,7 +45,8 @@ function Home() {
     <div>
       <HeroHeader />
       <MovieSection title="Trending" movies={trendingMovie.results} />
-      <UpcomingMovie title="pcoming Movie" movies={upcomingMovie.results} />
+      <Banner image={oscarBanner} />
+      <UpcomingMovie title="Upcoming Movie" movies={upcomingMovie.results} />
       <MovieSection title="What's Popular" movies={popularMovie.results} />
     </div>
   );
