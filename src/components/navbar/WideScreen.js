@@ -4,10 +4,10 @@ import "./navbar.css";
 import { IoIosMoon } from "react-icons/io";
 import { IoIosSunny } from "react-icons/io";
 function WideScreen() {
-  const [darkMode,setDarkMode] = useState(false)
+  const [darkMode,setDarkMode] = useState(true)
   const handleDarkMode = ()=>{
     setDarkMode(!darkMode)
-    document.body.classList.toggle("dark-mode", darkMode);
+    document.body.classList.toggle("dark-mode");
   }
   return (
     <div className="text-white font-bold flex items-center space-x-5">

@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -83,6 +84,7 @@ function MovieSection({ title, movies }) {
       <Slider {...settings}>
         {movies.map((movie) => (
           <div className=" p-3 h-[380px]" key={movie.id}>
+            <Link to={`./movie/${movie.id}`}>
             <div className="flex flex-col space-y-3 relative">
               <figure>
                 <img
@@ -108,6 +110,7 @@ function MovieSection({ title, movies }) {
                 </p>
               </div>
             </div>
+            </Link>
           </div>
         ))}
       </Slider>
