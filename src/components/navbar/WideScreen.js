@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import "./navbar.css";
 import { IoIosMoon } from "react-icons/io";
 import { IoIosSunny } from "react-icons/io";
+import FavoriteMovie from '../FavoriteMovie';
 function WideScreen() {
   const [darkMode,setDarkMode] = useState(true)
   const handleDarkMode = ()=>{
@@ -27,6 +28,9 @@ function WideScreen() {
         <Link to="">
           <p>Join TMDB</p>
         </Link>
+        <div>
+          <FavoriteMovie />
+        </div>
         <button onClick={handleDarkMode} className="border p-1 rounded-lg text-lg">
             {darkMode ?  <IoIosMoon /> : <IoIosSunny /> }
         </button>

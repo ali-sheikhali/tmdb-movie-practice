@@ -2,6 +2,9 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
 import { FaHeart } from "react-icons/fa";
+import BorderStyle from "./BorderStyle";
+import Footer from "./Footer";
+import FavoriteMovie from "./FavoriteMovie";
 
 const fetcher = (...args) =>
   fetch(...args).then((responsive) => responsive.json());
@@ -20,56 +23,42 @@ function MovieDetails() {
   if (!data) {
     return <div>Loading...</div>;
   }
-  const getBorderStyle = (voteAverage) => {
-    let borderColor;
-    if (voteAverage < 5) {
-      borderColor = "red";
-    } else if (voteAverage < 7) {
-      borderColor = "orange";
-    } else if (voteAverage < 9) {
-      borderColor = "green";
-    } else {
-      borderColor = "rgb(255,215,0)";
-    }
-    return { borderColor, borderWidth: "4px", borderStyle: "solid" };
-  };
   console.log(data);
   return (
-    <div className="my-5 w-full bg-gradient-to-r from-[#01b4e4] to-[#408ea3]">
-      <div className="w-10/12 mx-auto py-5 flex flex-col gap-5">
-        <figure className="flex justify-center">
+    <div className="w-full bg-gradient-to-r from-[#01b4e4] to-[#408ea3]">
+      <div className="w-10/12 mx-auto py-5 flex flex-col md:flex-row gap-5 my-5">
+        <figure className="flex justify-center w-6/12">
           <img
-            className="rounded-lg"
+            className="rounded-lg w-[220px]"
             src={`https://www.themoviedb.org/t/p/w220_and_h330_face${data.poster_path}`}
             alt=""
           />
         </figure>
-        <div className="flex flex-col justify-center space-y-2 ">
+        <div className="flex flex-col justify-center space-y-2 w-6/12 ">
           <h3 className="text-2xl font-bold">{data.title}</h3>
           <p>
             {data.release_date} / {data.genres[0].name} /{data.runtime} min{" "}
           </p>
-          <div className="flex items-center space-x-10">
-            <p
-              className=" rounded-full p-1 bg-[#032541] text-white"
-              style={getBorderStyle(data.vote_average)}
-            >
-              {parseFloat(data.vote_average).toFixed(1)}
-            </p>
-
-            <span className="p-3 text-white bg-[#032541] rounded-full">
-              <FaHeart />
+          <div className="relative flex items-center space-x-10">
+            <span className="text-white p-1 bg-[#032541] rounded-full">
+              <FavoriteMovie />
+            </span>
+            <span>
+              <BorderStyle movie={data.vote_average} />
             </span>
           </div>
           <p>{data.tagline}</p>
-         
-      
-        </div>
-        <div >
+          <div className="hidden md:block">
             <p className="font-bold">overview: </p>
             {data.overview}
           </div>
+        </div>
+        <div className="md:hidden">
+          <p className="font-bold">overview: </p>
+          {data.overview}
+        </div>
       </div>
+      <Footer />
     </div>
   );
 }

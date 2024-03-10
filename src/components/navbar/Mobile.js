@@ -4,8 +4,8 @@ import { Menu } from "@headlessui/react";
 import { GoChevronDown } from "react-icons/go";
 import { GoChevronUp } from "react-icons/go";
 import Search from "../Search";
-import { IoIosMoon } from "react-icons/io";
-import { IoIosSunny } from "react-icons/io";
+import { IoIosMoon, IoIosSunny } from "react-icons/io";
+import FavoriteMovie from "../FavoriteMovie";
 import "./navbar.css";
 function Mobile() {
   const [darkMode, setDarkMode] = useState(true);
@@ -21,9 +21,6 @@ function Mobile() {
       <Link>
         <p to="/tv-shows">TV Shows</p>
       </Link>
-      <Link to="/people">
-        <p>People</p>
-      </Link>
       <Menu>
         {({ open }) => (
           <>
@@ -36,6 +33,9 @@ function Mobile() {
             <Menu.Items className="absolute z-10 top-20 bg-[#032541] flex flex-col justify-center items-center mx-auto space-y-3 w-full right-0 py-3">
               <Menu.Item className="hover:bg-[#133754] w-full text-center py-1">
                 {({ active }) => <Link to="/login">Login</Link>}
+              </Menu.Item>
+              <Menu.Item className="hover:bg-[#133754] w-full text-center py-1">
+                {({ active }) => <Link to="/login">People</Link>}
               </Menu.Item>
               <Menu.Item className="hover:bg-[#133754] w-full text-center py-1">
                 {({ active }) => <Link to="">Join TMDB</Link>}
@@ -54,9 +54,12 @@ function Mobile() {
           </>
         )}
       </Menu>
+      <div >
+        <FavoriteMovie />
+      </div>
       <button
         onClick={handleDarkMode}
-        className="border p-1 rounded-lg text-lg"
+        className="border p-1 rounded-full text-lg"
       >
         {darkMode ? <IoIosMoon /> : <IoIosSunny />}
       </button>

@@ -1,5 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
+import BorderStyle from "../BorderStyle";
+import FavoriteMovie from "../FavoriteMovie";
+import { Link } from "react-router-dom";
 function UpcomingMovie({ title, movies }) {
   const settings = {
     dots: true,
@@ -50,19 +53,6 @@ function UpcomingMovie({ title, movies }) {
       },
     ],
   };
-  const getBorderStyle = (voteAverage) => {
-    let borderColor;
-    if (voteAverage < 5) {
-      borderColor = "red";
-    } else if (voteAverage < 7) {
-      borderColor = "orange";
-    } else if (voteAverage < 9) {
-      borderColor = "green";
-    } else {
-      borderColor = "rgb(255,215,0)";
-    }
-    return { borderColor, borderWidth: "4px", borderStyle: "solid" };
-  };
 
   return (
     <div className="w-10/12 mx-auto my-10">
@@ -72,18 +62,20 @@ function UpcomingMovie({ title, movies }) {
           {movies.map((movie) => (
             <div key={movie.id}>
               <div className="flex flex-col p-3">
-                <figure>
+                <figure className="relative">
                   <img
                     className=" rounded-2xl "
                     src={`https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`}
                     alt=""
                   />
-                  <div
-                    className="absolute top-1   rounded-full p-1 bg-black text-white"
-                    style={getBorderStyle(movie.vote_average)}
-                  >
-                    {parseFloat(movie.vote_average).toFixed(1)}
+                  <div className="absolute top-1   rounded-full p-1 bg-black text-white">
+                    <BorderStyle movie={movie.vote_average} />
                   </div>
+                  <Link to="">
+                  <div className=" text-white absolute bottom-1 right-3">
+                    <FavoriteMovie />
+                  </div>
+                  </Link>
                 </figure>
                 <div className="px-2">
                   <p className="font-bold hover:text-[rgba(1,180,228,1)] ">
