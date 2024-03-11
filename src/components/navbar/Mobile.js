@@ -55,7 +55,8 @@ function Mobile() {
         )}
       </Menu>
       <div >
-        <FavoriteMovie />
+        <Link to="/fav-movie"><FavoriteMovie /></Link>
+        
       </div>
       <button
         onClick={handleDarkMode}

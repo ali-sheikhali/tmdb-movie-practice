@@ -1,14 +1,29 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
-import { FaHeart } from "react-icons/fa";
 import BorderStyle from "./BorderStyle";
 import Footer from "./Footer";
 import FavoriteMovie from "./FavoriteMovie";
+import { useDispatch, useSelector } from "react-redux";
+import { addToFavorite } from "./store/favoriteSlice";
 
 const fetcher = (...args) =>
   fetch(...args).then((responsive) => responsive.json());
+
 function MovieDetails() {
+  
+  const dispatch = useDispatch();
+  const favoriteMovie = useSelector((state) => state.favorite);
+
+  const addToFavoriteHandle = (data) => {
+    const movieExist = favoriteMovie.some(
+      (favmovie) => favmovie.id === data.id
+    );
+    if (!movieExist) {
+      dispatch(addToFavorite(data));
+    }
+  };
+
   const { id } = useParams();
   const apiKey = "bd422e7b500e20ac0bad0f395328407c";
 
@@ -23,7 +38,6 @@ function MovieDetails() {
   if (!data) {
     return <div>Loading...</div>;
   }
-  console.log(data);
   return (
     <div className="w-full bg-gradient-to-r from-[#01b4e4] to-[#408ea3]">
       <div className="w-10/12 mx-auto py-5 flex flex-col md:flex-row gap-5 my-5">
@@ -40,9 +54,14 @@ function MovieDetails() {
             {data.release_date} / {data.genres[0].name} /{data.runtime} min{" "}
           </p>
           <div className="relative flex items-center space-x-10">
-            <span className="text-white p-1 bg-[#032541] rounded-full">
+            <button
+              onClick={() => {
+                addToFavoriteHandle(data);
+              }}
+              className="text-white p-1 bg-[#032541] rounded-full"
+            >
               <FavoriteMovie />
-            </span>
+            </button>
             <span>
               <BorderStyle movie={data.vote_average} />
             </span>

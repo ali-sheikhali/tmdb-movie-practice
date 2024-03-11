@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 import BorderStyle from "../BorderStyle";
 import FavoriteMovie from "../FavoriteMovie";
+import { useDispatch, useSelector } from "react-redux";
+import { addToFavorite } from "../store/favoriteSlice";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -37,6 +39,18 @@ function SamplePrevArrow(props) {
   );
 }
 function MovieSection({ title, movies }) {
+  
+  const dispatch = useDispatch();
+  const favoriteMovie = useSelector((state) => state.favorite);
+
+  const handleFavorite = (movie) => {
+    const movieExist = favoriteMovie.some(
+      (favMovie) => favMovie.id === movie.id
+    );
+    if (!movieExist) {
+      dispatch(addToFavorite(movie));
+    }
+  };
   const settings = {
     className: "center",
     centerMode: true,
@@ -84,11 +98,15 @@ function MovieSection({ title, movies }) {
                   <div className="top-[-10px] absolute">
                     <BorderStyle movie={movie.vote_average} />
                   </div>
-                  <Link to="">
-                  <div className=" text-white absolute bottom-0 right-1">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleFavorite(movie);
+                    }}
+                    className=" text-white absolute bottom-0 right-1"
+                  >
                     <FavoriteMovie />
-                  </div>
-                  </Link>
+                  </button>
                 </figure>
                 <div className="px-2">
                   <p className="font-bold hover:text-[rgba(1,180,228,1)] ">
