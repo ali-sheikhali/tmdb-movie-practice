@@ -4,6 +4,7 @@ import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/Home";
 import MovieDetails from "./components/MovieDetails";
 import LikeMovie from "./components/LikeMovie";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/movie/:id" Component={MovieDetails} />
           <Route path="/fav-movie" Component={LikeMovie} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );

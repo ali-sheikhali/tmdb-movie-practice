@@ -57,7 +57,7 @@ function Home() {
       <Banner image={oscarBanner} />
       <UpcomingMovie title="Upcoming Movie" movies={upcomingMovie.results} />
       <MovieSection title="What's Popular" movies={popularMovie.results} />
-      <Footer />
+      
     </div>
   );
 }

@@ -2,7 +2,6 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
 import BorderStyle from "./BorderStyle";
-import Footer from "./Footer";
 import FavoriteMovie from "./FavoriteMovie";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavorite } from "./store/favoriteSlice";
@@ -77,7 +76,6 @@ function MovieDetails() {
           {data.overview}
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

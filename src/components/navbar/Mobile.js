@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "@headlessui/react";
-import { GoChevronDown } from "react-icons/go";
-import { GoChevronUp } from "react-icons/go";
 import Search from "../Search";
-import { IoIosMoon, IoIosSunny } from "react-icons/io";
 import FavoriteMovie from "../FavoriteMovie";
+import { IoIosMoon, IoIosSunny } from "react-icons/io";
+import { GoChevronDown,GoChevronUp } from "react-icons/go";
 import "./navbar.css";
+
 function Mobile() {
   const [darkMode, setDarkMode] = useState(true);
   const handleDarkMode = () => {

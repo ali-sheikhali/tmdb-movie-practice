@@ -3,6 +3,9 @@ import Slider from "react-slick";
 import BorderStyle from "../BorderStyle";
 import FavoriteMovie from "../FavoriteMovie";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addToFavorite } from "../store/favoriteSlice";
+
 function UpcomingMovie({ title, movies }) {
   const settings = {
     dots: true,
@@ -53,6 +56,17 @@ function UpcomingMovie({ title, movies }) {
       },
     ],
   };
+  const dispatch = useDispatch();
+  const favoriteMovie = useSelector((state) => state.favorite);
+
+  const handleFavorite = (movie) => {
+    const movieExist = favoriteMovie.some(
+      (favMovie) => favMovie.id === movie.id
+    );
+    if (!movieExist) {
+      dispatch(addToFavorite(movie));
+    }
+  };
 
   return (
     <div className="w-10/12 mx-auto my-10">
@@ -71,11 +85,16 @@ function UpcomingMovie({ title, movies }) {
                   <div className="absolute top-1   rounded-full p-1 bg-black text-white">
                     <BorderStyle movie={movie.vote_average} />
                   </div>
-                  <Link to="">
-                  <div className=" text-white absolute bottom-1 right-3">
+                 
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleFavorite(movie);
+                    }}
+                    className=" text-white absolute bottom-1 right-3"
+                  >
                     <FavoriteMovie />
-                  </div>
-                  </Link>
+                  </button>
                 </figure>
                 <div className="px-2">
                   <p className="font-bold hover:text-[rgba(1,180,228,1)] ">
