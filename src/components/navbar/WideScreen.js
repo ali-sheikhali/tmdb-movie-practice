@@ -21,7 +21,7 @@ function WideScreen() {
       <Link to="/people">
         <p>People</p>
       </Link>
-      <Link to="/login">
+      <Link to="/login-sign">
         <p>Login</p>
       </Link>
       <Link to="">

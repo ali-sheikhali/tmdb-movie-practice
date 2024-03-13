@@ -32,7 +32,7 @@ function Mobile() {
             </Menu.Button>
             <Menu.Items className="absolute z-10 top-20 bg-[#032541] flex flex-col justify-center items-center mx-auto space-y-3 w-full right-0 py-3">
               <Menu.Item className="hover:bg-[#133754] w-full text-center py-1">
-                {({ active }) => <Link to="/login">Login</Link>}
+                {({ active }) => <Link to="/login-sign">Login</Link>}
               </Menu.Item>
               <Menu.Item className="hover:bg-[#133754] w-full text-center py-1">
                 {({ active }) => <Link to="/login">People</Link>}
