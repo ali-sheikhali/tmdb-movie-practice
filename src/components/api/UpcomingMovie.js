@@ -2,7 +2,6 @@ import React from "react";
 import Slider from "react-slick";
 import BorderStyle from "../BorderStyle";
 import FavoriteMovie from "../FavoriteMovie";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavorite } from "../store/favoriteSlice";
 
@@ -91,7 +90,7 @@ function UpcomingMovie({ title, movies }) {
                       e.preventDefault();
                       handleFavorite(movie);
                     }}
-                    className=" text-white absolute bottom-1 right-3"
+                    className=" text-white absolute bottom-3 right-5"
                   >
                     <FavoriteMovie />
                   </button>

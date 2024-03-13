@@ -103,7 +103,7 @@ function MovieSection({ title, movies }) {
                       e.preventDefault();
                       handleFavorite(movie);
                     }}
-                    className=" text-white absolute bottom-0 right-1"
+                    className=" text-white absolute bottom-3 right-5"
                   >
                     <FavoriteMovie />
                   </button>
