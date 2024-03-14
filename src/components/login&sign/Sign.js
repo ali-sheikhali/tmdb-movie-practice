@@ -7,20 +7,40 @@ import { IoKeyOutline } from "react-icons/io5";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { Link } from "react-router-dom";
+// import { useFormik } from "formik";
+// import * as yup from "yup";
+function Sign({ toggle }) {
+  // const formik = useFormik({
+  //   initialValues: {
+  //     fullName: "",
+  //     PhoneNo: "",
+  //     Email: "",
+  //     Password: "",
+  //     ConfirmPassWord: "",
+  //   },
+  //   onSubmit: (values) => {
+  //     alert(JSON.stringify(values));
+  //   },
+  //   validationSchema: yup.object({
+  //     fullName: yup.string().min(3, "more than 3 character").required("Required"),
+  //     PhoneNo: yup.number().required("Required"),
+  //     Email: yup.string().required("Required"),
+  //     Password: yup.string().required("Required"),
+  //   })
+  // });
 
-function Sign({toggle}) {
   return (
     <div className="w-10/12 md:w-6/12 xl:w-4/12 mx-auto my-10 py-5 bg-[#032541] rounded-md">
       <h3 className="flex justify-center text-white font-bold mb-5">Sign in</h3>
       <form className="flex flex-col space-y-5">
         <Form
-          name="Full Name: "
+          name="FullName: "
           placeHolder="Enter Full Name..."
           type="text"
           logo={<FaRegUser />}
         />
         <Form
-          name="Phone No: "
+          name="PhoneNo: "
           placeHolder="Enter your Phone no..."
           type="text"
           logo={<CiMobile4 />}
@@ -38,7 +58,7 @@ function Sign({toggle}) {
           logo={<IoKeyOutline />}
         />
         <Form
-          name="Confirm PassWord: "
+          name="ConfirmPassWord: "
           placeHolder="Enter your Confirm PassWord..."
           type="password"
           logo={<IoKeyOutline />}
@@ -69,7 +89,13 @@ function Sign({toggle}) {
       </div>
       <div className="text-white mt-5 flex justify-center">
         <p>
-            Have and Account? <span onClick={toggle} className="font-bold border-b-2 ml-1 cursor-pointer">Sign in</span>
+          Have and Account?{" "}
+          <span
+            onClick={toggle}
+            className="font-bold border-b-2 ml-1 cursor-pointer"
+          >
+            Sign in
+          </span>
         </p>
       </div>
     </div>
