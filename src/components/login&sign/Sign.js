@@ -8,7 +8,7 @@ import { FaGoogle } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-function Sign() {
+function Sign({toggle}) {
   return (
     <div className="w-10/12 md:w-6/12 xl:w-4/12 mx-auto my-10 py-5 bg-[#032541] rounded-md">
       <h3 className="flex justify-center text-white font-bold mb-5">Sign in</h3>
@@ -69,7 +69,7 @@ function Sign() {
       </div>
       <div className="text-white mt-5 flex justify-center">
         <p>
-            Have and Account? <span className="font-bold">Sign in</span>
+            Have and Account? <span onClick={toggle} className="font-bold border-b-2 ml-1 cursor-pointer">Sign in</span>
         </p>
       </div>
     </div>

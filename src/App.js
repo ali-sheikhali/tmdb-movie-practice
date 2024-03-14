@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import MovieDetails from "./components/MovieDetails";
 import LikeMovie from "./components/LikeMovie";
 import Footer from "./components/Footer";
-import loginSignin from "./pages/loginSignin";
+import LoginSignin from "./pages/LoginSignin";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Route path="/" Component={Home} />
           <Route path="/movie/:id" Component={MovieDetails} />
           <Route path="/fav-movie" Component={LikeMovie} />
-          <Route path="/login-sign" Component={loginSignin} />         
+          <Route path="/login-sign" Component={LoginSignin} />         
         </Routes>
         <Footer />
       </Router>

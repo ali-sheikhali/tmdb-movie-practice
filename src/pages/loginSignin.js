@@ -1,14 +1,23 @@
-import React from 'react'
-import Sign from '../components/login&sign/Sign'
-import Login from '../components/login&sign/Login'
+import React, { useState } from "react";
+import Sign from "../components/login&sign/Sign";
+import Login from "../components/login&sign/Login";
 
-function loginSignin() {
+function LoginSignin() {
+  const [showLogin, setShowLogin] = useState(false);
+  const handleToggle = () => {
+    setShowLogin(!showLogin);
+  };
   return (
-    <div>
-        <Sign />
-        <Login />
+    <div className="fade-animation">
+      <div>
+        {showLogin ? (
+          <Login toggle={handleToggle} />
+        ) : (
+          <Sign toggle={handleToggle} />
+        )}
+      </div>
     </div>
-  )
+  );
 }
 
-export default loginSignin
+export default LoginSignin;
