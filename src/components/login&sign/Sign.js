@@ -7,69 +7,97 @@ import { IoKeyOutline } from "react-icons/io5";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { Link } from "react-router-dom";
-// import { useFormik } from "formik";
-// import * as yup from "yup";
-function Sign({ toggle }) {
-  // const formik = useFormik({
-  //   initialValues: {
-  //     fullName: "",
-  //     PhoneNo: "",
-  //     Email: "",
-  //     Password: "",
-  //     ConfirmPassWord: "",
-  //   },
-  //   onSubmit: (values) => {
-  //     alert(JSON.stringify(values));
-  //   },
-  //   validationSchema: yup.object({
-  //     fullName: yup.string().min(3, "more than 3 character").required("Required"),
-  //     PhoneNo: yup.number().required("Required"),
-  //     Email: yup.string().required("Required"),
-  //     Password: yup.string().required("Required"),
-  //   })
-  // });
+import { useFormik } from "formik";
+import * as yup from "yup";
 
+function Sign({ toggle }) {
+
+  const formik = useFormik({
+    initialValues: {
+      fullName: "",
+      PhoneNo: "",
+      Email: "",
+      Password: "",
+      ConfirmPassWord: "",
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values));
+    },
+    validationSchema: yup.object({
+      fullName: yup.string().required("Full name is required"),
+      email: yup
+        .string()
+        .email("Invalid email address")
+        .required("Email is required"),
+      password: yup
+        .string()
+        .min(8, "Password must be at least 8 characters")
+        .required("Password is required"),
+      confirmPassword: yup
+        .string()
+        .oneOf([yup.ref("password"), null], "Passwords must match")
+        .required("Please confirm your password"),
+    }),
+  });
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    formik.handleSubmit(); 
+  };
   return (
     <div className="w-10/12 md:w-6/12 xl:w-4/12 mx-auto my-10 py-5 bg-[#032541] rounded-md">
       <h3 className="flex justify-center text-white font-bold mb-5">Sign in</h3>
-      <form className="flex flex-col space-y-5">
+
+      <form  className="flex flex-col space-y-5">
         <Form
           name="FullName: "
           placeHolder="Enter Full Name..."
           type="text"
           logo={<FaRegUser />}
+          formik={formik}
         />
+        {formik.touched.FullName && formik.errors.FullName ? (
+          <div className="text-white">{formik.errors.FullName}</div>
+        ) : null}
         <Form
           name="PhoneNo: "
           placeHolder="Enter your Phone no..."
           type="text"
           logo={<CiMobile4 />}
+          formik={formik}
+
         />
         <Form
           name="Email: "
           placeHolder="Enter your Email..."
           type="email"
           logo={<MdOutlineEmail />}
+          formik={formik}
+
         />
         <Form
           name="Password: "
           placeHolder="Enter your PassWord..."
           type="password"
           logo={<IoKeyOutline />}
+          formik={formik}
+
         />
         <Form
           name="ConfirmPassWord: "
           placeHolder="Enter your Confirm PassWord..."
           type="password"
           logo={<IoKeyOutline />}
+          formik={formik}
+
         />
         <button
           type="submit"
           className="w-6/12 mx-auto py-1 rounded-xl bg-white"
+          onClick={handleSubmit}
         >
           Register
         </button>
-      </form>
+      </form >
       <div className="w-10/12 mx-auto mt-8 text-white relative">
         <hr />
         <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">

@@ -81,10 +81,10 @@ function UpcomingMovie({ title, movies }) {
                     src={`https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`}
                     alt=""
                   />
-                  <div className="absolute top-1   rounded-full p-1 bg-black text-white">
+                  <div className="absolute top-[-10px] left-[-5px] rounded-full p-1 bg-black text-white">
                     <BorderStyle movie={movie.vote_average} />
                   </div>
-                 
+
                   <button
                     onClick={(e) => {
                       e.preventDefault();
