@@ -11,14 +11,13 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 
 function Sign({ toggle }) {
-
   const formik = useFormik({
     initialValues: {
       fullName: "",
-      PhoneNo: "",
-      Email: "",
-      Password: "",
-      ConfirmPassWord: "",
+      phone: "",
+      email: "",
+      password: "",
+      confirmPassWord: "",
     },
     onSubmit: (values) => {
       alert(JSON.stringify(values));
@@ -33,71 +32,80 @@ function Sign({ toggle }) {
         .string()
         .min(8, "Password must be at least 8 characters")
         .required("Password is required"),
-      confirmPassword: yup
+      confirmPassWord: yup
         .string()
         .oneOf([yup.ref("password"), null], "Passwords must match")
         .required("Please confirm your password"),
     }),
   });
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    formik.handleSubmit(); 
-  };
+
   return (
     <div className="w-10/12 md:w-6/12 xl:w-4/12 mx-auto my-10 py-5 bg-[#032541] rounded-md">
       <h3 className="flex justify-center text-white font-bold mb-5">Sign in</h3>
 
-      <form  className="flex flex-col space-y-5">
+      <form onSubmit={formik.handleSubmit} className="flex flex-col space-y-5">
         <Form
-          name="FullName: "
+          name="fullName"
+          label="FullName:"
           placeHolder="Enter Full Name..."
           type="text"
           logo={<FaRegUser />}
           formik={formik}
         />
-        {formik.touched.FullName && formik.errors.FullName ? (
-          <div className="text-white">{formik.errors.FullName}</div>
+        {formik.touched.fullName && formik.errors.fullName ? (
+          <div className="text-white">{formik.errors.fullName}</div>
         ) : null}
         <Form
-          name="PhoneNo: "
+          label="PhoneNo: "
+          name="phone"
           placeHolder="Enter your Phone no..."
           type="text"
           logo={<CiMobile4 />}
           formik={formik}
-
         />
+        {formik.touched.phone && formik.errors.phone ? (
+          <div className="text-white">{formik.errors.phone}</div>
+        ) : null}
         <Form
-          name="Email: "
+          label="Email: "
+          name="email"
           placeHolder="Enter your Email..."
           type="email"
           logo={<MdOutlineEmail />}
           formik={formik}
-
         />
+        {formik.touched.email && formik.errors.email ? (
+          <div className="text-white">{formik.errors.email}</div>
+        ) : null}
         <Form
-          name="Password: "
+          label="Password: "
+          name="password"
           placeHolder="Enter your PassWord..."
           type="password"
           logo={<IoKeyOutline />}
           formik={formik}
-
         />
+        {formik.touched.password && formik.errors.password ? (
+          <div className="text-white">{formik.errors.password}</div>
+        ) : null}
         <Form
-          name="ConfirmPassWord: "
+          label="ConfirmPassWord: "
+          name="confirmPassWord"
           placeHolder="Enter your Confirm PassWord..."
           type="password"
           logo={<IoKeyOutline />}
           formik={formik}
-
         />
+        {formik.touched.confirmPassWord && formik.errors.confirmPassWord ? (
+          <div className="text-white">{formik.errors.confirmPassWord}</div>
+        ) : null}
         <button
           type="submit"
           className="w-6/12 mx-auto py-1 rounded-xl bg-white"
-          onClick={handleSubmit}
         >
           Register
         </button>
-      </form >
+      </form>
       <div className="w-10/12 mx-auto mt-8 text-white relative">
         <hr />
         <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">

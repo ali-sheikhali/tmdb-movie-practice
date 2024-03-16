@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 
-function Form({ name, placeHolder, type, logo, formik }) {
+function Form({ name, label, placeHolder, type, logo, formik }) {
   const [showPassword, setShowPassword] = useState(false);
   const showPasswordHandle = () => {
     setShowPassword(!showPassword);
@@ -10,7 +10,7 @@ function Form({ name, placeHolder, type, logo, formik }) {
   return (
     <div className="flex flex-col space-y-1 mx-12 relative">
       <label htmlFor={name} className="text-white text-xs">
-        {name}
+        {label}
       </label>
       <input
         name={name}
