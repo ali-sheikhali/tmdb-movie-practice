@@ -4,11 +4,11 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
-
+import './footer.css'
 function Footer() {
   return (
-    <div className="bg-[#032541] w-full text-white">
-      <div className="w-10/12 mx-auto py-5 flex flex-col xl:flex-row xl:justify-between space-y-3">
+    <div className="wrapper bg-[#032541] w-full text-white left-0 right-0 bottom-0">
+      <div className="content w-10/12 mx-auto py-5 flex flex-col xl:flex-row xl:justify-between space-y-3">
         <div className="flex justify-around items-center border-b pb-5 xl:border-none xl:space-x-5">
           <figure className="w-[130px] h-[90px]">
             <img src={tmdbLogo} alt="tmdb-logo" />

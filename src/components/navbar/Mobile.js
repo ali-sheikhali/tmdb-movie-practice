@@ -35,7 +35,7 @@ function Mobile() {
                 {({ active }) => <Link to="/login-sign">Login</Link>}
               </Menu.Item>
               <Menu.Item className="hover:bg-[#133754] w-full text-center py-1">
-                {({ active }) => <Link to="/login">People</Link>}
+                {({ active }) => <Link to="/people">People</Link>}
               </Menu.Item>
               <Menu.Item className="hover:bg-[#133754] w-full text-center py-1">
                 {({ active }) => <Link to="">Join TMDB</Link>}

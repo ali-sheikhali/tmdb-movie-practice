@@ -15,8 +15,8 @@ function WideScreen() {
       <Link to="/movies">
         <p>Movies</p>
       </Link>
-      <Link>
-        <p to="/tv-shows">TV Shows</p>
+      <Link to="/tv-shows">
+        <p >TV Shows</p>
       </Link>
       <Link to="/people">
         <p>People</p>

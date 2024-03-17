@@ -9,7 +9,6 @@ import { MdOutlinePlayCircle } from "react-icons/md";
 function LikeMovie() {
   const favoriteMovies = useSelector((state) => state.favorite);
   const dispatch = useDispatch();
-  console.log(favoriteMovies);
   const handleDelete = (id) => {
     dispatch(removeToFavorite(id));
   };
@@ -29,7 +28,7 @@ function LikeMovie() {
                   src={`https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`}
                   alt=""
                 />
-                <div className="absolute top-0 left-9">
+                <div className="absolute top-0 left-3 md:left-0">
                   <BorderStyle movie={movie.vote_average} />
                 </div>
               </figure>

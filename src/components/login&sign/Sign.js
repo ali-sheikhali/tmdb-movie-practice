@@ -11,6 +11,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 
 function Sign({ toggle }) {
+  
   const formik = useFormik({
     initialValues: {
       fullName: "",
@@ -44,61 +45,81 @@ function Sign({ toggle }) {
       <h3 className="flex justify-center text-white font-bold mb-5">Sign in</h3>
 
       <form onSubmit={formik.handleSubmit} className="flex flex-col space-y-5">
-        <Form
-          name="fullName"
-          label="FullName:"
-          placeHolder="Enter Full Name..."
-          type="text"
-          logo={<FaRegUser />}
-          formik={formik}
-        />
-        {formik.touched.fullName && formik.errors.fullName ? (
-          <div className="text-white">{formik.errors.fullName}</div>
-        ) : null}
-        <Form
-          label="PhoneNo: "
-          name="phone"
-          placeHolder="Enter your Phone no..."
-          type="text"
-          logo={<CiMobile4 />}
-          formik={formik}
-        />
-        {formik.touched.phone && formik.errors.phone ? (
-          <div className="text-white">{formik.errors.phone}</div>
-        ) : null}
-        <Form
-          label="Email: "
-          name="email"
-          placeHolder="Enter your Email..."
-          type="email"
-          logo={<MdOutlineEmail />}
-          formik={formik}
-        />
-        {formik.touched.email && formik.errors.email ? (
-          <div className="text-white">{formik.errors.email}</div>
-        ) : null}
-        <Form
-          label="Password: "
-          name="password"
-          placeHolder="Enter your PassWord..."
-          type="password"
-          logo={<IoKeyOutline />}
-          formik={formik}
-        />
-        {formik.touched.password && formik.errors.password ? (
-          <div className="text-white">{formik.errors.password}</div>
-        ) : null}
-        <Form
-          label="ConfirmPassWord: "
-          name="confirmPassWord"
-          placeHolder="Enter your Confirm PassWord..."
-          type="password"
-          logo={<IoKeyOutline />}
-          formik={formik}
-        />
-        {formik.touched.confirmPassWord && formik.errors.confirmPassWord ? (
-          <div className="text-white">{formik.errors.confirmPassWord}</div>
-        ) : null}
+        <div>
+          <Form
+            name="fullName"
+            label="FullName:"
+            placeHolder="Enter Full Name..."
+            type="text"
+            logo={<FaRegUser />}
+            formik={formik}
+          />
+          {formik.touched.fullName && formik.errors.fullName ? (
+            <div className="text-red-500 text-xs ml-12 mt-1">
+              {formik.errors.fullName}
+            </div>
+          ) : null}
+        </div>
+        <div>
+          <Form
+            label="PhoneNo: "
+            name="phone"
+            placeHolder="Enter your Phone no..."
+            type="text"
+            logo={<CiMobile4 />}
+            formik={formik}
+          />
+          {formik.touched.phone && formik.errors.phone ? (
+            <div className="text-red-500 text-xs ml-12 mt-1">
+              {formik.errors.phone}
+            </div>
+          ) : null}
+        </div>
+        <div>
+          <Form
+            label="Email: "
+            name="email"
+            placeHolder="Enter your Email..."
+            type="email"
+            logo={<MdOutlineEmail />}
+            formik={formik}
+          />
+          {formik.touched.email && formik.errors.email ? (
+            <div className="text-red-500 text-xs ml-12 mt-1">
+              {formik.errors.email}
+            </div>
+          ) : null}
+        </div>
+        <div>
+          <Form
+            label="Password: "
+            name="password"
+            placeHolder="Enter your PassWord..."
+            type="password"
+            logo={<IoKeyOutline />}
+            formik={formik}
+          />
+          {formik.touched.password && formik.errors.password ? (
+            <div className="text-red-500 text-xs ml-12 mt-1">
+              {formik.errors.password}
+            </div>
+          ) : null}
+        </div>
+        <div>
+          <Form
+            label="ConfirmPassWord: "
+            name="confirmPassWord"
+            placeHolder="Enter your Confirm PassWord..."
+            type="password"
+            logo={<IoKeyOutline />}
+            formik={formik}
+          />
+          {formik.touched.confirmPassWord && formik.errors.confirmPassWord ? (
+            <div className="text-red-500 text-xs ml-12 mt-1">
+              {formik.errors.confirmPassWord}
+            </div>
+          ) : null}
+        </div>
         <button
           type="submit"
           className="w-6/12 mx-auto py-1 rounded-xl bg-white"
