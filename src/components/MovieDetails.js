@@ -10,7 +10,6 @@ const fetcher = (...args) =>
   fetch(...args).then((responsive) => responsive.json());
 
 function MovieDetails() {
-  
   const dispatch = useDispatch();
   const favoriteMovie = useSelector((state) => state.favorite);
 
@@ -35,7 +34,11 @@ function MovieDetails() {
   }
 
   if (!data) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center">
+        <div className="loading loading-spinner loading-lg "></div>
+      </div>
+    );
   }
   return (
     <div className="w-full bg-gradient-to-r from-[#01b4e4] to-[#408ea3]">

@@ -17,7 +17,7 @@ function Movies() {
   }
 
   if (!TopMovies) {
-    return <h2>Loading...</h2>;
+    return <h2 className="loading loading-spinner loading-lg"></h2>;
   }
   console.log(TopMovies);
   return (

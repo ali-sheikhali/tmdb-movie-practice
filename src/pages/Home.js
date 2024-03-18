@@ -47,7 +47,7 @@ function Home() {
     popularMovieIsLoading ||
     upcomingMovieErrorIsLoading
   ) {
-    return <h1>loading...</h1>;
+    return <div className="skeleton w-32 h-32"></div>;
   }
 
   return (
