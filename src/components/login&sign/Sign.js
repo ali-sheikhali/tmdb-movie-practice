@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "./Form";
 import { FaRegUser } from "react-icons/fa";
 import { CiMobile4 } from "react-icons/ci";
@@ -9,8 +9,11 @@ import { FaFacebookF } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import Information from "./Information";
 
 function Sign({ toggle }) {
+
+  const [submitData, setSubmitData] = useState(null);
   
   const formik = useFormik({
     initialValues: {
@@ -21,7 +24,9 @@ function Sign({ toggle }) {
       confirmPassWord: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values));
+      // <Information values={JSON.stringify(values)} />
+      // alert(JSON.stringify(values));
+      setSubmitData(values);
     },
     validationSchema: yup.object({
       fullName: yup.string().required("Full name is required"),
@@ -39,6 +44,9 @@ function Sign({ toggle }) {
         .required("Please confirm your password"),
     }),
   });
+  if (submitData) {
+    return <Information values={submitData} />
+  }
 
   return (
     <div className="w-10/12 md:w-6/12 xl:w-4/12 mx-auto my-10 py-5 bg-[#032541] rounded-md">

@@ -12,19 +12,19 @@ function Show({ name, showKnownFor, showAverage }) {
           className="w-[315px] md:w-[280px] xl:w-[250px] mx-auto h-[410px] flex flex-col  shadow-md py-2"
           key={items.id}
         >
-            <Link to={`./movie/${items.id}`} >
-          <figure className="flex justify-center items-center relative">
-            <img
-              className=" rounded-2xl"
-              src={`https://www.themoviedb.org/t/p/w220_and_h330_face${
-                items.profile_path || items.poster_path
-              }`}
-              alt=""
-            />
-            <div className="absolute top-[-10px] left-8 md:left-3 lg:left-0">
-              {showAverage && <BorderStyle movie={items.vote_average} />}
-            </div>
-          </figure>
+          <Link to={`./movie/${items.id}`}>
+            <figure className="flex justify-center items-center relative">
+              <img
+                className=" rounded-2xl"
+                src={`https://www.themoviedb.org/t/p/w220_and_h330_face${
+                  items.profile_path || items.poster_path
+                }`}
+                alt=""
+              />
+              <div className="absolute top-[-10px] left-8 md:left-3 lg:left-0">
+                {showAverage && <BorderStyle movie={items.vote_average} />}
+              </div>
+            </figure>
           </Link>
           <div className="mx-5 whitespace-normal overflow-hidden ">
             <div className="font-bold">{items.name || items.title}</div>
