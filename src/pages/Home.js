@@ -5,7 +5,7 @@ import useSWR from "swr";
 import UpcomingMovie from "../components/api/UpcomingMovie";
 import Banner from "../components/Banner";
 import oscarBanner from "../components/img/oscars-banner-1.jpg";
-import Footer from "../components/Footer";
+import Loading from "../components/Loading";
 
 const fetcher = (...args) =>
   fetch(...args).then((responsive) => responsive.json());
@@ -47,7 +47,7 @@ function Home() {
     popularMovieIsLoading ||
     upcomingMovieErrorIsLoading
   ) {
-    return <div className="skeleton w-32 h-32"></div>;
+    return <Loading /> ;
   }
 
   return (

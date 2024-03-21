@@ -1,6 +1,7 @@
 import React from "react";
 import useSWR from "swr";
 import Show from "./Show";
+import Loading from "../Loading";
 
 const fetcher = (...args) => {
   return fetch(...args).then((responsive) => responsive.json());
@@ -17,7 +18,7 @@ function TvShow() {
   }
 
   if (!TvShow) {
-    return <h2>Loading...</h2>;
+    return <Loading /> ;
   }
   return (
     <div>

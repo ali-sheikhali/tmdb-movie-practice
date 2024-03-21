@@ -1,6 +1,7 @@
 import React from "react";
 import useSWR from "swr";
 import Show from "./Show";
+import Loading from "../Loading";
 
 const fetcher = (...args) => {
   return fetch(...args).then((res) => res.json());
@@ -17,7 +18,7 @@ function Movies() {
   }
 
   if (!TopMovies) {
-    return <h2 className="loading loading-spinner loading-lg"></h2>;
+    return <Loading />;
   }
   console.log(TopMovies);
   return (

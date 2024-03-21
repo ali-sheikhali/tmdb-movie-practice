@@ -5,6 +5,7 @@ import BorderStyle from "./BorderStyle";
 import FavoriteMovie from "./FavoriteMovie";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavorite } from "./store/favoriteSlice";
+import Loading from "./Loading";
 
 const fetcher = (...args) =>
   fetch(...args).then((responsive) => responsive.json());
@@ -35,9 +36,7 @@ function MovieDetails() {
 
   if (!data) {
     return (
-      <div className="flex justify-center items-center">
-        <div className="loading loading-spinner loading-lg "></div>
-      </div>
+      <Loading />
     );
   }
   return (
