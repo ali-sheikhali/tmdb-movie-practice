@@ -2,6 +2,7 @@ import React from "react";
 import useSWR from "swr";
 import Show from "./Show";
 import Loading from "../Loading";
+import GoToUp from "../GoToUp";
 
 const fetcher = (...args) => {
   return fetch(...args).then((responsive) => responsive.json());
@@ -23,6 +24,7 @@ function TvShow() {
   return (
     <div>
       <Show name={TvShow.results} showAverage={true} />
+      <GoToUp />
     </div>
   );
 }
