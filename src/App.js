@@ -9,7 +9,6 @@ import LoginSignin from "./pages/LoginSignin";
 import People from "./components/show/People";
 import TvShow from "./components/show/TvShow";
 import Movies from "./components/show/Movies";
-import Information from "./components/login&sign/Information";
 
 function App() {
   return (

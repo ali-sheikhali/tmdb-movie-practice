@@ -6,6 +6,7 @@ import UpcomingMovie from "../components/api/UpcomingMovie";
 import Banner from "../components/Banner";
 import oscarBanner from "../components/img/oscars-banner-1.jpg";
 import Loading from "../components/Loading";
+import GoToUp from "../components/GoToUp";
 
 const fetcher = (...args) =>
   fetch(...args).then((responsive) => responsive.json());
@@ -53,6 +54,7 @@ function Home() {
   return (
     <div>
       <HeroHeader />
+      <GoToUp />
       <MovieSection title="Trending" movies={trendingMovie.results} />
       <Banner image={oscarBanner} />
       <UpcomingMovie title="Upcoming Movie" movies={upcomingMovie.results} />
