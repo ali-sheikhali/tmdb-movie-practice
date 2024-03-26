@@ -10,12 +10,11 @@ function Banner({ image }) {
           to="https://www.themoviedb.org/award/1-academy-awards/ceremony/96"
           target="blank"
         >
-         
           <button
             className="absolute bottom-2 left-5 text-white
          border hover:bg-white hover:text-black rounded-lg px-2 py-1 "
           >
-            View the Nominees and News
+            View the Winners Nominees and News
           </button>
         </Link>
       </figure>
