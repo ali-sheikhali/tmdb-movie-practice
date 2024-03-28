@@ -3,7 +3,7 @@ import movieFilm from "./img/movie film cinema poster banner.jpg";
 import Search from "./Search";
 function HeroHeader() {
   return (
-    <div className="md:w-10/12 mx-auto relative">
+    <div className="w-full mx-auto relative">
       <figure>
         <img className="rounded-b-lg shadow-xl" src={movieFilm} alt="" />
       </figure>
