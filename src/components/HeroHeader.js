@@ -5,7 +5,7 @@ function HeroHeader() {
   return (
     <div className="w-full mx-auto relative">
       <figure>
-        <img className="rounded-b-lg shadow-xl" src={movieFilm} alt="" />
+        <img className="rounded-b-lg shadow-md" src={movieFilm} alt="" />
       </figure>
       <div className="absolute text-white top-[40%] right-10 md:top-[45%] md:right-20 lg:right-24 ">
         <h2 className="font-bold text-2xl lg:text-3xl">Welcome.</h2>
